@@ -166,7 +166,7 @@ void AssemblyWidget::setAssemblyTextEdit()
         QString errinfo = "<span style=\"color:red;\">";
         errinfo += cs_strerror(cs_errno(csEng));
         errinfo += "</span>";
-        outputDisplay->setHtml(errinfo);
+        assemblyInput->setHtml(errinfo);
     }
     cs_free(insn, count);
 }
@@ -244,8 +244,6 @@ void AssemblyWidget::setCurArch(int indexArch)
         assert(0);
     }
 }
-
-
 
 QWidget* registerAssemblyWidget()
 {

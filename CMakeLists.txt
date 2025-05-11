@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Helper VERSION 0.1 LANGUAGES CXX)
+project(Helper VERSION 0.1 LANGUAGES C CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -27,6 +27,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         assemblywidget.h assemblywidget.cpp
+        procmemreaderwidget.h procmemreaderwidget.cpp
+        README.md
 
     )
 # Define target properties for Android with Qt 6 as:
@@ -84,4 +86,10 @@ set(CS_TARGET capstone)
 target_link_libraries(Helper    PRIVATE
     ${CS_TARGET}
     keystone
+)
+
+add_subdirectory(platform)
+
+target_link_libraries(Helper PRIVATE
+    platform
 )
